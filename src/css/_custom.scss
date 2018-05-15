@@ -1,0 +1,319 @@
+/* These inject tags are used for dynamically creating imports for themelet styles, you can place them where ever you like in this file. */
+
+/* inject:imports */
+/* endinject */
+
+/* This file allows you to override default styles in one central location for easier upgrade and maintenance. */
+
+/* Common elements */
+
+$gray: #2c2c3c;
+$gray-text: #ababab;
+$custom-serif-font: "Arvo";
+$custom-sansserif-font: "Lato";
+
+
+body {
+    background: #fff;
+    font-size: 16px;
+    font-family: $custom-sansserif-font, Arial, sans-serif;
+}
+
+/* Locks Scroll*/
+.no-scroll {
+    overflow: hidden;
+}
+
+#wrapper {
+    padding-top: 0;
+}
+
+.wrapper {
+    width: 100%; max-width: 1170px;
+    margin: 0 auto; padding: 0 15px;
+
+    /* cf */
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+/* display flex */
+.flex {
+    display: flex;
+
+    &.align-center {
+        align-items: center;
+    }
+
+    &.full-center {
+        justify-content: center;
+        align-items: center;   
+    }
+}
+
+/* spacing */
+.padding-tb-25 {
+    padding: 25px 0;
+}
+
+/* borders */
+.border-tb {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+
+/* nameplate align fix */
+.nameplate-field, .nameplate-content {
+    padding: 0px;
+    vertical-align: middle;
+}
+.nameplate-field {
+    padding-right: 6px;
+}
+
+/* Share container button size */
+.share-container .btn {
+    width: 40px;
+}
+
+/* ------ Site ------ */
+/* Header */
+#heading {
+    width: 100%;
+    padding-bottom: 18px;
+    
+    a {
+        color: inherit;
+        &:hover, &:focus {
+            text-decoration: none;
+        }
+    }
+}
+
+#sign-in {
+    flex: 1 0 auto;
+    color: lighten($gray,60%);
+}
+
+/* Navigation */
+#navigation {
+    padding: 18px 0;
+    background: $gray;
+
+    ul {
+        li {
+            display: inline-block;
+            margin-right: 20px;
+            
+            &#search {
+                float: right;
+                .form-group, .lfr-ddm-field-group {
+                    margin-bottom: 0; vertical-align: middle;
+                }
+
+                .form-control {
+                    background: transparent;
+                    border-width: 0px 0px 1px 0px;
+                    border-color: currentColor;
+                    border-radius: 0px;
+                    color: $gray-text;
+                    &:focus {
+                        outline: 0;
+                        border-color: #fff;
+                        box-shadow: 0px 4px 5px -3px rgba(255,255,255,0.4)
+                    }
+                }
+
+                a {
+                    color: $gray-text;
+                }
+            }
+
+            > a {
+                display: block;
+                padding: 10px 0;
+                font-size: 1.13em; font-weight: bold;
+                color: $gray-text;
+                transition: color 250ms ease;
+
+                &:hover {
+                    color: lighten($gray-text, 40%);
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    .delete-tab { top: -9px; right: -5px; }
+
+    label[for="menu-checker"], #menu-checker { display: none; }
+
+}
+
+/* Content Wrapper */
+#content {
+    position: relative;
+    
+    &:before {
+        content: '';
+        display: block;
+        width: 100%; height: 60px;
+        @include gradient-vertical($gray-text, #fff);
+    }
+}
+
+
+/* Footer */
+#footer {
+    padding: 42px 0 30px;
+    background: $gray;
+    color: #fff;
+}
+
+
+/* Media Queries */
+
+/* tablets */
+@media screen and (max-width: 768px) {
+
+}
+
+/* mobile */
+@media screen and (max-width: 460px) {
+    
+    #wrapper {
+        left: 0;
+        transition: left 300ms ease 0ms;
+
+        &::before {
+            content: '';
+            position: fixed; top: 0%; left: -100%;
+            display: block; width: 100%; height: 100%;
+            background: #fff;
+            opacity: 0;
+            z-index: 98;
+
+            transition: opacity 240ms ease-in;
+        }
+
+    }
+
+    header#banner {
+        display: flex;
+        background: #2c2c3c;
+
+        .container {
+            width: 100%;
+        }
+
+        #heading {
+            h1 {
+                margin: 0;
+                color: #fff;
+            }
+
+            img {
+                width: 25px;
+                height: 25px;
+            }
+
+            span {
+                font-size: 0.8em;
+            }
+
+            img,span { margin: 0; }
+        }
+
+        #navigation {
+            align-self: center; order: -1;
+            
+            .container {
+                padding: 0;
+            }
+
+            label[for="menu-checker"] {
+                position: relative;
+                display: block;
+                margin: 0px;
+                padding:0 15px;
+                text-align: left;
+                color: #fff;
+
+                svg {
+                    path {
+                        transform-origin: center;
+                        transition: fill 250ms ease, transform 370ms ease 100ms;
+                    }
+                }
+            }
+
+            ul { 
+                position: fixed; top: 0; left: -250px; z-index: 99;
+                width: 250px; height: 100vh;
+                padding-top: 8px;
+                background: #2c2c3c;
+
+                transition: left 300ms ease;
+
+                li {
+                    display: block;
+                    margin: 0 -15px; padding: 0 15px;
+                    border-bottom: 1px solid #404052;
+                }
+
+                li#search {
+                float: none;
+
+                .portlet form {
+                    .input-text-wrapper {
+                        width: calc(100% - 40px);
+                    }
+                }
+            }
+
+            }
+
+        }
+    }
+
+    /* active menu */
+    #menu-checker:checked + #wrapper {
+        left: 250px;
+        transition: left 300ms ease 70ms;
+
+        &::before {
+            left: 0;
+            opacity: 0.7
+        }
+
+        #navigation{
+            ul {
+                left: 0;
+            }
+
+            label[for="menu-checker"] {
+                z-index: 100;
+                svg {
+                    path {
+                        fill: #333;
+                        &:nth-child(1){ transform: scale(0); }
+                        &:nth-child(2){ transform: translate(-5px,-4px) rotate(-45deg); }
+                        &:nth-child(3){ transform: translate(-4px, 5px) rotate(45deg); }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* Other Imports
+/* Portlets General */
+@import 'portlets/_blogs';
+@import 'portlets/_ap-blog-list';
+@import 'portlets/_ap-blog-detailed';
+@import 'portlets/_ap-blog-sidebar-list';

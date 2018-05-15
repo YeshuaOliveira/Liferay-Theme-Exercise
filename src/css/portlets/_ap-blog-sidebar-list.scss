@@ -1,0 +1,42 @@
+aside.blog-sidebar {
+	section {
+		margin-bottom: 22px;
+
+		&::before {
+			content: '';
+			display: block; width: 40px; height: 1px;
+			margin-bottom: 12px;
+			background: #ccc;
+		}
+
+		figure {
+			position: relative;
+
+			&:before {
+				content: '';
+				position: absolute;
+				width: 100%; height: 100%;
+				@include gradient-directional(transparent, rgba(0,0,0,.5), 135deg);
+				transition: opacity 0.5s ease;
+			}
+			.cover-img {
+				@include aspect-ratio(16,9);
+			}
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit;
+
+			&:hover {
+				h3 span {
+					border-bottom: 1px solid #ccc;
+				}
+
+				figure::before {
+					opacity: 0;
+				}
+			}
+		}
+	}
+}

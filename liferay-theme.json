@@ -1,0 +1,9 @@
+{
+  "LiferayTheme": {
+    "deployPath": "/home/yeshua/projetos/ThemeExercise/bundles/deploy",
+    "themeName": "my-theme",
+    "appServerPathTheme": "/home/yeshua/projetos/ThemeExercise/bundles/tomcat-8.0.32/webapps/my-theme",
+    "deployed": true,
+    "appServerPath": "/home/yeshua/projetos/ThemeExercise/bundles/tomcat-8.0.32"
+  }
+}
